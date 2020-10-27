@@ -52,26 +52,22 @@ class GameUi
   public
 
   def players_turn(players_info)
-    spaces_avilable = 9
-    while spaces_avilable > 0 
-      players_info.each do |user_name, value|
-        spaces_avilable -= 1
-        display_gameboard
-        puts "Please player #{user_name.green} choose a number from the grid 1 to 9 or q to exit. Remember your selection was #{value.green} \n\n"
-        input_user = gets.chomp
-        puts "Player #{user_name.green} there are only #{spaces_avilable} spaces left \n\n"
-        display_invalid_move
-        if input_user == 'q' || spaces_avilable.zero?
-          puts 'GAME OVER'.light_blue
-          return 'Game Over'
-        end
-      end
-
-    end
     users = []
     players_info.each { |user, _value| users.push(user) }
+    8.downto(0) do |space|
+      user_id = space.odd? ? 1 : 0
+      display_gameboard
+      puts "Please player #{users[user_id].green} choose a number from the grid 1 to 9 or q to exit."
+      input_user = gets.chomp
+      puts "Player #{users[user_id].green} there are only #{space} spaces left \n\n"
+      display_invalid_move
+      if input_user == 'q'
+        puts 'GAME OVER'.light_blue
+        return 'Game Over'
+      end
+    end
     display_final_results('win', users[0])
-    display_final_results(nil, users[1])
+    display_final_results(nil)
     puts 'GAME OVER'.light_blue
   end
 
