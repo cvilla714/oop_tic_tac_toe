@@ -1,4 +1,4 @@
-gem 'colorize'
+gem 'colorize' ~>0.8.1'
 gem 'rubocop', '~>0.81.0'
 source 'https://rubygems.org'
 

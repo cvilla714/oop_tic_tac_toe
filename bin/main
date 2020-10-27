@@ -53,7 +53,7 @@ class GameUi
 
   def players_turn(players_info)
     spaces_avilable = 9
-    while spaces_avilable >= 1
+    while spaces_avilable > 0 
       players_info.each do |user_name, value|
         spaces_avilable -= 1
         display_gameboard
@@ -61,13 +61,13 @@ class GameUi
         input_user = gets.chomp
         puts "Player #{user_name.green} there are only #{spaces_avilable} spaces left \n\n"
         display_invalid_move
-        if input_user == 'q'
+        if input_user == 'q' || spaces_avilable.zero?
           puts 'GAME OVER'.light_blue
           return 'Game Over'
         end
       end
 
-      end
+    end
     users = []
     players_info.each { |user, _value| users.push(user) }
     display_final_results('win', users[0])
