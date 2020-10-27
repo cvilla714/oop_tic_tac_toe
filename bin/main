@@ -1,2 +1,49 @@
 #!/usr/bin/env ruby
-puts 'Hello world!'
+require 'colorize'
+class GameUi
+    attr_reader :title, :instructions
+
+    def initialize(title, instructions)
+        @title = title
+        @instructions = instructions
+    end
+
+    def display_title_on_screen
+        puts title
+    end
+
+    def provide_players_info
+        puts 'Please provide the name for Player1: '
+        player1_name = gets.chomp
+        puts 'Please choose between X or O '
+        player1_value = gets.chomp
+        puts 'Please provide the name for Player2: '
+        player2_name = gets.chomp
+        player2_value = player1_value == "O" ? "X" : "O"
+        puts "player1 name #{player1_name} choose #{player1_value.red}."
+        puts "player2 name #{player2_name} choose #{player2_value.blue}."
+    end
+
+    def display_instructions
+        puts instructions
+    end
+
+    def display_gameboard
+        puts " #{1}|#{2}|#{3}".yellow
+        puts ' ----- '.yellow
+        puts " #{4}|#{5}|#{6}".yellow
+        puts ' ----- '.yellow
+        puts " #{7}|#{8}|#{9}".yellow
+    end
+end
+
+game_ui = GameUi.new("\t\t\t\t*****TIC TAC TOE*******\n\n\n", 
+"**for two players, X and O, who take turns marking the spaces in a 3×3 grid. 
+The player who succeeds in placing three of their marks in a horizontal, vertical, 
+or diagonal row is the winner. It is a solved game with a forced draw assuming best play
+from both players**\n\n\n")
+
+game_ui.display_title_on_screen
+game_ui.display_instructions
+game_ui.provide_players_info
+game_ui.display_gameboard
