@@ -53,7 +53,7 @@ class GameUi
 
   def players_turn(players_info)
     spaces_avilable = 9
-    while spaces_avilable >= 0
+    while spaces_avilable >= 1
       players_info.each do |user_name, value|
         spaces_avilable -= 1
         display_gameboard
@@ -67,7 +67,7 @@ class GameUi
         end
       end
 
-    end
+      end
     users = []
     players_info.each { |user, _value| users.push(user) }
     display_final_results('win', users[0])
