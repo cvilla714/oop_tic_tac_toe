@@ -25,12 +25,12 @@ class GameUi
       player2_name => player2_value
     }
     display_info(infoplayer)
+    players_turn(infoplayer)
   end
 
   def display_instructions
     puts instructions
   end
-
   def display_gameboard
     puts ' 1|2|3'.yellow
     puts ' ----- '.yellow
@@ -47,6 +47,44 @@ class GameUi
       puts "player#{counter += 1} #{key} choose #{value}"
     end
   end
+
+  public
+
+  def players_turn(players_info)
+    spaces_avilable = 9
+    while spaces_avilable  > 0
+        players_info.each do |user_name, value|
+            display_gameboard
+            puts "Please player #{user_name.green} choose a number from the grid 1 to 9 or q to exit. Remember your selection was #{value.green} \n\n"
+            input_user = gets.chomp
+            puts "Player #{user_name.green} there are only #{spaces_avilable} spaces left \n\n"
+            display_invalid_move
+            if input_user == "q"
+                puts "GAME OVER".light_blue
+                return "Game Over"
+            end
+            spaces_avilable -= 1
+        end
+        
+    end
+    users = []
+    players_info.each{ |user, value| users.push(user) }
+    display_final_results("win",users[0])
+    display_final_results(nil, users[1])
+    puts "GAME OVER".light_blue
+  end
+
+  def display_final_results(value, player_name=" ")
+    if value == "win"
+        puts "#{player_name} Congrats you won!!"
+    else
+        puts "It's a tie!"
+    end
+  end
+
+  def display_invalid_move
+    puts "That selection was already made"
+  end
 end
 
 game_ui = GameUi.new("\t\t\t\t*****TIC TAC TOE*******\n\n\n",
@@ -58,4 +96,4 @@ from both players**\n\n\n")
 game_ui.display_title_on_screen
 game_ui.display_instructions
 game_ui.provide_players_info
-game_ui.display_gameboard
+
