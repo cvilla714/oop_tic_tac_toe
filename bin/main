@@ -20,8 +20,11 @@ class GameUi
     puts 'Please provide the name for Player2: '
     player2_name = gets.chomp
     player2_value = player1_value == 'O' ? 'X' : 'O'
-    puts "player1 name #{player1_name} choose #{player1_value.red}."
-    puts "player2 name #{player2_name} choose #{player2_value.blue}."
+    infoplayer = {
+      player1_name => player1_value,
+      player2_name => player2_value
+    }
+    display_info(infoplayer)
   end
 
   def display_instructions
@@ -34,6 +37,15 @@ class GameUi
     puts ' 4|5|6'.yellow
     puts ' ----- '.yellow
     puts ' 7|8|9'.yellow
+  end
+
+  private
+
+  def display_info(players)
+    counter = 0
+    players.each do |key, value|
+      puts "player#{counter += 1} #{key} choose #{value}"
+    end
   end
 end
 
