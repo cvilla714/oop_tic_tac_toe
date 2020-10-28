@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 require 'colorize'
+require_relative 'user'
+require_relative 'helpers'
 class GameUi
   attr_reader :title, :instructions
 
@@ -17,12 +19,16 @@ class GameUi
     player1_name = gets.chomp
     puts 'Please choose between X or O '
     player1_value = gets.chomp
+    player1_value = AuthenticatingValues.validating_value(player1_value)
+    # puts player1_value
     puts 'Please provide the name for Player2: '
     player2_name = gets.chomp
     player2_value = player1_value == 'O' ? 'X' : 'O'
+    player1 = Player.new(player1_name, player1_value)
+    player2 = Player.new(player2_name, player2_value)
     infoplayer = {
-      player1_name => player1_value,
-      player2_name => player2_value
+    player1_name => player1_value,
+    player2_name => player2_value
     }
     display_info(infoplayer)
     players_turn(infoplayer)
