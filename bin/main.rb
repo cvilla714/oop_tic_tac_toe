@@ -2,6 +2,7 @@
 require 'colorize'
 require_relative 'user'
 require_relative 'helpers'
+require_relative 'game_board'
 class GameUi
   attr_reader :title, :instructions
 
@@ -35,27 +36,32 @@ class GameUi
     puts instructions
   end
 
-  def display_gameboard
-    puts ' 1|2|3'.yellow
-    puts ' ----- '.yellow
-    puts ' 4|5|6'.yellow
-    puts ' ----- '.yellow
-    puts ' 7|8|9'.yellow
-  end
+  # def display_gameboard
+  # puts ' 1|2|3'.yellow
+  # puts ' ----- '.yellow
+  # puts ' 4|5|6'.yellow
+  # puts ' ----- '.yellow
+  # puts ' 7|8|9'.yellow
+  # end
 
   def players_turn(players_list)
+    table = Board.new
+    table.display_board
     8.downto(0) do |space|
       user_id = space.odd? ? 1 : 0
-      display_gameboard
+      # table.display_board
       puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
       input_user = gets.chomp
       input_user = AuthenticatingValues.numbers_validator(input_user)
+      # table.board[input_user.to_i - 1] = players_list[user_id].value unless input_user == 'q'
       puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
-      display_invalid_move
+      # display_invalid_move
       if input_user == 'q'
         puts 'GAME OVER'.light_blue
         return 'Game Over'
       end
+      table.board[input_user.to_i - 1] = players_list[user_id].value unless input_user == 'q'
+      table.display_board
     end
     display_final_results('win', players_list[0].name)
     display_final_results(nil)

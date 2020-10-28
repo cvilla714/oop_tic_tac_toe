@@ -17,15 +17,22 @@ class Board
   end
 
   def display_board
-    puts " #{@board[0]}|#{@board[1]}|#{@board[2]}"
-    puts ' ----- '.yellow
-    puts " #{@board[3]}|#{@board[4]}|#{@board[5]}"
-    puts ' ----- '.yellow
-    puts " #{@board[6]}|#{@board[7]}|#{@board[8]}"
+    puts " \t\t \n".yellow
+    puts " \t\t#{@board[0]}|#{@board[1]}|#{@board[2]}"
+    puts " \t\t----- ".yellow
+    puts " \t\t#{@board[3]}|#{@board[4]}|#{@board[5]}"
+    puts " \t\t----- ".yellow
+    puts " \t\t#{@board[6]}|#{@board[7]}|#{@board[8]}"
+    puts " \t\t----- \n".yellow
   end
 end
 
 # table = Board.new
 # puts table.display_board
 # puts table.board[3] = 'X'.blue
+# puts table.display_board
+
+# table = Board.new
+# puts table.display_board
+# puts table.board[7] = 'O'.blue
 # puts table.display_board
