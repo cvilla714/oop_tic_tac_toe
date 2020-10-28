@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop:disable Metrics/MethodLength
 require 'colorize'
 require_relative 'user'
 require_relative 'helpers'
@@ -21,7 +22,6 @@ class GameUi
     puts 'Please choose between X or O '
     player1_value = gets.chomp
     player1_value = AuthenticatingValues.validating_value(player1_value)
-    # puts player1_value
     puts 'Please provide the name for Player2: '
     player2_name = gets.chomp
     player2_value = player1_value == 'O' ? 'X' : 'O'
@@ -54,15 +54,13 @@ class GameUi
       table.board[empty_space.to_i - 1] = players_list[user_id].value unless input_user == 'q'
       winner = AuthenticatingValues.authenticating_winner(table, players_list[user_id])
       table.display_board
-      if winner 
+      if winner
         draw = winner
-        break 
+        break
       end
       draw = winner
     end
-    unless draw
-      puts "It's a draw!".red
-    end
+    puts "It's a draw!".red unless draw
     puts 'GAME OVER'.light_blue
   end
 end
@@ -76,3 +74,4 @@ from both players**\n\n\n")
 game_ui.display_title_on_screen
 game_ui.display_instructions
 game_ui.provide_players_info
+# rubocop:enable Metrics/MethodLength

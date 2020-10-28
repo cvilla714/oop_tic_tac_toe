@@ -34,16 +34,14 @@ module AuthenticatingValues
   end
 
   def self.authenticating_winner(board, player)
-    # p board.board
     board.winner.each do |item|
-      if board.board[item[0]]== player.value && board.board[item[1]]== player.value && board.board[item[2]]== player.value
-        puts "Congratulatios #{player.name} you Won!!".green
-        return true
-      end
+      next unless board.board[item[0]] == player.value &&
+                  board.board[item[1]] == player.value &&
+                  board.board[item[2]] == player.value
+
+      puts "Congratulatios #{player.name} you Won!!".green
+      return true
     end
     false
   end
 end
-
-# board = ["x", 2, 3, 4, 5, 6, 7, 8, 9]
-# p AuthenticatingValues.entry_space_validator(board, 1)

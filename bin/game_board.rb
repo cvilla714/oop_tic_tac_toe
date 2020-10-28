@@ -1,7 +1,7 @@
 require 'colorize'
 class Board
-  attr_reader :board, :winner
-  attr_writer :board
+  attr_accessor :board
+  attr_reader :winner
 
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -27,13 +27,3 @@ class Board
     puts " \t\t----- \n".yellow
   end
 end
-
-# table = Board.new
-# puts table.display_board
-# puts table.board[3] = 'X'.blue
-# puts table.display_board
-
-# table = Board.new
-# puts table.display_board
-# puts table.board[7] = 'O'.blue
-# puts table.display_board
