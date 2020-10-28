@@ -26,11 +26,13 @@ class GameUi
     player2_value = player1_value == 'O' ? 'X' : 'O'
     player1 = Player.new(player1_name, player1_value)
     player2 = Player.new(player2_name, player2_value)
+    
     infoplayer = {
-    player1_name => player1_value,
-    player2_name => player2_value
+      player1_name => player1_value,
+      player2_name => player2_value
     }
-    display_info(infoplayer)
+    player1.show_players_info
+    player2.show_players_info
     players_turn(infoplayer)
   end
 
@@ -46,14 +48,14 @@ class GameUi
     puts ' 7|8|9'.yellow
   end
 
-  private
+  # private
 
-  def display_info(players)
-    counter = 0
-    players.each do |key, value|
-      puts "player#{counter += 1} #{key} choose #{value}"
-    end
-  end
+  # def display_info(players)
+  #   counter = 0
+  #   players.each do |key, value|
+  #     puts "player#{counter += 1} #{key} choose #{value}"
+  #   end
+  # end
 
   public
 
