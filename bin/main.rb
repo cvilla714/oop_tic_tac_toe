@@ -26,14 +26,9 @@ class GameUi
     player2_value = player1_value == 'O' ? 'X' : 'O'
     player1 = Player.new(player1_name, player1_value)
     player2 = Player.new(player2_name, player2_value)
-    
-    infoplayer = {
-      player1_name => player1_value,
-      player2_name => player2_value
-    }
-    player1.show_players_info
+    players_list = [player1, player2]
     player2.show_players_info
-    players_turn(infoplayer)
+    players_turn(players_list)
   end
 
   def display_instructions
@@ -59,22 +54,20 @@ class GameUi
 
   public
 
-  def players_turn(players_info)
-    users = []
-    players_info.each { |user, _value| users.push(user) }
+  def players_turn(players_list)
     8.downto(0) do |space|
       user_id = space.odd? ? 1 : 0
       display_gameboard
-      puts "Please player #{users[user_id].green} choose a number from the grid 1 to 9 or q to exit."
+      puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
       input_user = gets.chomp
-      puts "Player #{users[user_id].green} there are only #{space} spaces left \n\n"
+      puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
       display_invalid_move
       if input_user == 'q'
         puts 'GAME OVER'.light_blue
         return 'Game Over'
       end
     end
-    display_final_results('win', users[0])
+    display_final_results('win', players_list[0].name)
     display_final_results(nil)
     puts 'GAME OVER'.light_blue
   end
