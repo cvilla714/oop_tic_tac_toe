@@ -21,7 +21,7 @@ class GameUi
     player1_name = gets.chomp
     puts 'Please choose between X or O '
     player1_value = gets.chomp
-    player1_value = AuthenticatingValues.validating_value(player1_value)
+    player1_value = AuthenticatingValues.validating_value(player1_value.upcase)
     puts 'Please provide the name for Player2: '
     player2_name = gets.chomp
     player2_value = player1_value == 'O' ? 'X' : 'O'

@@ -3,7 +3,7 @@ module AuthenticatingValues
   NUMBERS_RANGES = (1..9).freeze
 
   def self.validating_value(choice)
-    until SELECTION.any?(choice.upcase!)
+    until SELECTION.any?(choice)
       puts 'Please enter X or O'
       choice = gets.chomp
     end
