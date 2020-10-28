@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/MethodLength
 require 'colorize'
-require_relative 'user'
-require_relative 'helpers'
-require_relative 'game_board'
+require_relative '../lib/user.rb'
+require_relative '../lib/helpers.rb'
+require_relative '../lib/game_board.rb'
 class GameUi
   attr_reader :title, :instructions
 

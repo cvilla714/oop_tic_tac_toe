@@ -11,3 +11,5 @@ class Player
     puts "player #{@name.green} choose #{@value.yellow}"
   end
 end
+
+#we are freaking working hard!!!!
