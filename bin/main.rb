@@ -43,23 +43,13 @@ class GameUi
     puts ' 7|8|9'.yellow
   end
 
-  # private
-
-  # def display_info(players)
-  #   counter = 0
-  #   players.each do |key, value|
-  #     puts "player#{counter += 1} #{key} choose #{value}"
-  #   end
-  # end
-
-  public
-
   def players_turn(players_list)
     8.downto(0) do |space|
       user_id = space.odd? ? 1 : 0
       display_gameboard
       puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
       input_user = gets.chomp
+      input_user = AuthenticatingValues.numbers_validator(input_user)
       puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
       display_invalid_move
       if input_user == 'q'
