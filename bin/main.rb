@@ -37,6 +37,7 @@ class GameUi
   end
 
   def players_turn(players_list)
+    draw = false
     table = Board.new
     table.display_board
     8.downto(0) do |space|
@@ -51,23 +52,18 @@ class GameUi
       end
       empty_space = AuthenticatingValues.entry_space_validator(table.board, input_user.to_i)
       table.board[empty_space.to_i - 1] = players_list[user_id].value unless input_user == 'q'
+      winner = AuthenticatingValues.authenticating_winner(table, players_list[user_id])
       table.display_board
+      if winner 
+        draw = winner
+        break 
+      end
+      draw = winner
     end
-    display_final_results('win', players_list[0].name)
-    display_final_results(nil)
+    unless draw
+      puts "It's a draw!".red
+    end
     puts 'GAME OVER'.light_blue
-  end
-
-  def display_final_results(value, player_name = ' ')
-    if value == 'win'
-      puts "#{player_name} Congrats you won!!"
-    else
-      puts "It's a tie!"
-    end
-  end
-
-  def display_invalid_move
-    puts 'That selection was already made'
   end
 end
 
