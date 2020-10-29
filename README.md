@@ -13,6 +13,16 @@
 - run bundle install
 
 ## Instructions
+
+## How to clone to run the game
+
+- Click on the green button top right corner that is called code from the page to access to clone the project.
+
+- Copy the https url and then on your local machine you have to run this command
+
+- Git clone + the link you copied.
+
+- Once the project has been clone you need to navigate to the bin folder by typing cd bin and from withing this folder run the command in the terminal main.rb
 	
 > How the game starts 
 - The very first thing to do is to type this command man.rb this will start the game.
