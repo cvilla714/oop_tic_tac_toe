@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/MethodLength
 require 'colorize'
-require_relative '../lib/user.rb'
-require_relative '../lib/logic.rb'
-require_relative '../lib/game_board.rb'
+require_relative '../lib/user'
+require_relative '../lib/logic'
+require_relative '../lib/game_board'
 class GameUi
   attr_reader :title, :instructions
+
   SELECTION = %w[X O].freeze
   NUMBERS_RANGES = (1..9).freeze
 
@@ -49,14 +50,24 @@ class GameUi
     value
   end
 
+  def validating_name(player_name)
+    while player_name =~ /\A\s*\Z/
+      puts 'Please Provide a Name for the player'
+      player_name = gets.chomp
+    end
+    player_name
+  end
+
   def provide_players_info
     puts 'Please provide the name for Player1: '
     player1_name = gets.chomp
+    player1_name = validating_name(player1_name)
     puts 'Please choose between X or O '
     player1_value = gets.chomp
     player1_value = validating_value(player1_value.upcase)
     puts 'Please provide the name for Player2: '
     player2_name = gets.chomp
+    player2_name = validating_name(player2_name)
     player2_value = player1_value == 'O' ? 'X' : 'O'
     player1 = Player.new(player1_name, player1_value)
     player2 = Player.new(player2_name, player2_value)
@@ -90,8 +101,8 @@ class GameUi
       input_user = numbers_validator(input_user)
       puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
       if input_user == 'q'
-        puts 'GAME OVER'.light_blue
-        return 'Game Over'
+        puts 'Quiting game...'.red
+        return nil
       end
       empty_space = entry_space_validator(table.board, input_user.to_i)
       table.board[empty_space.to_i - 1] = players_list[user_id].value unless input_user == 'q'
@@ -104,8 +115,7 @@ class GameUi
       end
       draw = winner
     end
-    puts "It's a draw!".red unless draw
-    puts 'GAME OVER'.light_blue
+    puts "It's a draw!".red + '  GAME OVER'.light_blue unless draw
   end
 end
 
