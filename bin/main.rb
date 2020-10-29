@@ -69,8 +69,8 @@ class GameUi
     player2_name = gets.chomp
     player2_name = validating_name(player2_name)
     player2_value = player1_value == 'O' ? 'X' : 'O'
-    player1 = Player.new(player1_name, player1_value)
-    player2 = Player.new(player2_name, player2_value)
+    player1 = Player.new(player1_name, player1_value.yellow)
+    player2 = Player.new(player2_name, player2_value.blue)
     players_list = [player1, player2]
     puts "player #{player2.name.green} choose #{player2.value.yellow}"
     players_turn(players_list)
