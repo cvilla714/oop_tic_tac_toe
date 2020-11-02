@@ -11,7 +11,8 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     end
 
     it 'validate the X and O' do
-      expect(game_board.validating_value('O')).to eq('O')
+      allow(game_board).to receive(:gets).and_return('O')
+      expect { game_board.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
     end
 
     it 'validate that the imput is between 1 to 9 or q' do
@@ -23,7 +24,8 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     end
 
     it 'validate Player name' do
-      expect(game_board.validating_name("Kender")).to eq("Kender")
+      allow(game_board).to receive(:gets).and_return('name')
+      expect { game_board.validating_name('') }.to output("Please Provide a Name for the player\n").to_stdout
     end
 
     it 'Returns the instructions ' do
