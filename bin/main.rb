@@ -16,7 +16,7 @@ class GameUi
   end
 
   def display_title_on_screen
-    puts title
+    title
   end
 
   def validating_value(choice)
@@ -125,7 +125,7 @@ The player who succeeds in placing three of their marks in a horizontal, vertica
 or diagonal row is the winner. It is a solved game with a forced draw assuming best play
 from both players.**\n\n\n")
 
-game_ui.display_title_on_screen
-game_ui.display_instructions
-game_ui.provide_players_info
+# puts game_ui.display_title_on_screen
+# game_ui.display_instructions
+# game_ui.provide_players_info
 # rubocop:enable Metrics/MethodLength
