@@ -2,7 +2,8 @@ require_relative '../bin/main'
 
 RSpec.describe 'An idial TIC TAC TOE game' do
   let(:title) { 'my title' }
-  let(:game_board) { GameUi.new(title, 'play the game') }
+  let(:instructions) { 'my instructions' }
+  let(:game_board) { GameUi.new(title, instructions) }
   let(:board) { ['X', 2, 3, 4, 5, 6, 7, 8, 9] }
   describe 'The GameUi class ' do
     it 'lets me add a title ' do
@@ -19,6 +20,14 @@ RSpec.describe 'An idial TIC TAC TOE game' do
 
     it 'validate Free spaces in the board' do
       expect(game_board.entry_space_validator(board, 3)).to eq(3)
+    end
+
+    it 'validate Player name' do
+      expect(game_board.validating_name("Kender")).to eq("Kender")
+    end
+
+    it 'Returns the instructions ' do
+      expect(game_board.display_instructions).to eq(instructions)
     end
 
   end

@@ -77,7 +77,7 @@ class GameUi
   end
 
   def display_instructions
-    puts instructions
+    instructions
   end
 
   def display_board(table)
@@ -126,6 +126,6 @@ or diagonal row is the winner. It is a solved game with a forced draw assuming b
 from both players.**\n\n\n")
 
 # puts game_ui.display_title_on_screen
-# game_ui.display_instructions
+# puts game_ui.display_instructions
 # game_ui.provide_players_info
 # rubocop:enable Metrics/MethodLength
