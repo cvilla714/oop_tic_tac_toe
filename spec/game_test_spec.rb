@@ -27,6 +27,14 @@ RSpec.describe GameUi do
       end
     end
   end
+
+  describe 'asking for the players name' do
+    it 'will check for the name of the first player' do
+      allow(maintitle).to receive(:gets).and_return('name')
+      expect { maintitle.ask_player_for_name(1) }.to output("Please provide the name for Player1: \n").to_stdout
+    end
+  end
+
   context 'asking for the player value' do
     it 'will ask for the value for the first player' do
       allow(maintitle).to receive(:gets).and_return('name')
@@ -50,5 +58,30 @@ RSpec.describe GameUi do
       expect { maintitle.validating_value('K') }.to output("Please enter X or O\n").to_stdout
     end
   end
-  
+
+  describe 'validated the number from 1 to 9' do
+    it 'will validate the number selection from 1 to 9' do
+      expect(maintitle.numbers_validator(5)).to eq(5)
+    end
+  end
+
+  context 'validate the wrong number selection' do
+    it 'will check if the user input the wrong number' do
+      allow(maintitle).to receive(:gets).and_return('5')
+      expect { maintitle.numbers_validator(10) }.to output("Please enter a number between 1 to 9 or q\n").to_stdout
+    end
+  end
+
+  describe 'validate the names the players are given' do
+    it 'will check for empty spaces for the players names' do
+      allow(maintitle).to receive(:gets).and_return('name')
+      expect { maintitle.validating_name('  ') }.to output("Please Provide a Name for the player\n").to_stdout
+    end
+  end
+
+  context 'validate the name of the player' do
+    it 'will check the player has provided a valid name' do
+      expect(maintitle.validating_name('Ali')).to eq('Ali')
+    end
+  end
 end
