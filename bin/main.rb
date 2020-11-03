@@ -74,6 +74,7 @@ class GameUi
     players_list = [player1, player2]
     puts "player #{player2.name.green} choose #{player2.value.yellow}"
     players_turn(players_list)
+    true
   end
 
   def display_instructions

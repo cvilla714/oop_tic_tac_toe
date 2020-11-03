@@ -14,6 +14,10 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     end
 
     it 'validate the X and O' do
+      expect(game_ui.validating_value('X')).to eq('X')
+    end
+
+    it 'validate input diferen values than the X and O' do
       allow(game_ui).to receive(:gets).and_return('O')
       expect { game_ui.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
     end
@@ -36,9 +40,13 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect { game_ui.entry_space_validator(board, 4) }.to output("That spot is taken chose again\n").to_stdout
     end
 
-    it 'validate Player name' do
+    it 'validate Player name no given' do
       allow(game_ui).to receive(:gets).and_return('name')
       expect { game_ui.validating_name('') }.to output("Please Provide a Name for the player\n").to_stdout
+    end
+
+    it 'validate Player name' do
+      expect(game_ui.validating_name('player')).to eq('player')
     end
 
     it 'Returns the instructions ' do
@@ -50,6 +58,14 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect { game_ui.display_board(game_board) }
         .to_not output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
         .to_stdout
+    end
+
+    it 'provide players info' do
+      allow(game_ui).to receive(:gets).and_return('player1', 'X', 'player2')
+      game_board.board = %w[O X O
+                            X O O
+                            X X O]
+      expect(game_ui.provide_players_info).to eq(true)
     end
   end
 
