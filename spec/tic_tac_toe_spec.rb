@@ -56,17 +56,14 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     it 'Display the board' do
       game_board.board = board
       expect { game_ui.display_board(game_board) }
-        .to_not output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
+        .to output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
         .to_stdout
     end
 
-    it 'provide players info' do
-      allow(game_ui).to receive(:gets).and_return('player1', 'X', 'player2')
-      game_board.board = %w[O X O
-                            X O O
-                            X X O]
-      expect(game_ui.provide_players_info).to eq(true)
-    end
+    # it 'start game' do
+    #   allow(game_ui).to receive(:gets).and_return('name')
+    #   expect { game_ui.start_game }.to output("Please Provide a Name for the player\n").to_stdout
+    # end
   end
 
   describe 'The Game logic ' do

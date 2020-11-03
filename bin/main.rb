@@ -58,6 +58,8 @@ class GameUi
     player_name
   end
 
+  private
+
   def provide_players_info
     puts 'Please provide the name for Player1: '
     player1_name = gets.chomp
@@ -77,20 +79,29 @@ class GameUi
     true
   end
 
+  public
+
   def display_instructions
     instructions
   end
 
+  def start_game
+    provide_players_info
+    true
+  end
+
   def display_board(table)
-    puts "\t\t \n".yellow +
-         " \t\t#{table.board[0]}|#{table.board[1]}|#{table.board[2]} \n" +
-         " \t\t----- \n".yellow +
-         " \t\t#{table.board[3]}|#{table.board[4]}|#{table.board[5]} \n" +
-         " \t\t----- \n".yellow +
-         " \t\t#{table.board[6]}|#{table.board[7]}|#{table.board[8]} \n" +
-         " \t\t----- \n".yellow
+    puts "\t\t \n" \
+         " \t\t#{table.board[0]}|#{table.board[1]}|#{table.board[2]} \n" \
+         " \t\t----- \n" \
+         " \t\t#{table.board[3]}|#{table.board[4]}|#{table.board[5]} \n" \
+         " \t\t----- \n" \
+         " \t\t#{table.board[6]}|#{table.board[7]}|#{table.board[8]} \n" \
+         " \t\t----- \n"
     table.board
   end
+
+  private
 
   def players_turn(players_list)
     draw = false
@@ -130,6 +141,6 @@ if __FILE__ == $PROGRAM_NAME
 
   puts game_ui.display_title_on_screen
   puts game_ui.display_instructions
-  game_ui.provide_players_info
+  game_ui.start_game
 end
 # rubocop:enable Metrics/MethodLength
