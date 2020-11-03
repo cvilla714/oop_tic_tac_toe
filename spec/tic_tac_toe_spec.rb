@@ -22,11 +22,11 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect { game_ui.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
     end
 
-    it 'validate that the imput is between 1 to 9 or q' do
+    it 'validate that the input is between 1 to 9 or q' do
       expect(game_ui.numbers_validator(1)).to eq(1)
     end
 
-    it 'validate that the imput is not between 1 to 9 or q' do
+    it 'validate that the input is not between 1 to 9 or q' do
       allow(game_ui).to receive(:gets).and_return('9')
       expect { game_ui.numbers_validator(10) }.to output("Please enter a number between 1 to 9 or q\n").to_stdout
     end
