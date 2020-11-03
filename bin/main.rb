@@ -41,7 +41,7 @@ class GameUi
       if value == board[value - 1]
         option = true
       else
-        puts 'That spot is taken chose again'.red
+        puts 'That spot is taken chose again'
         new_input = gets.chomp
         value = new_input.to_i
         option = false
@@ -119,13 +119,15 @@ class GameUi
   end
 end
 
-game_ui = GameUi.new("\t\t\t\t*****TIC TAC TOE*******\n\n\n",
-                     "**for two players, X and O, who take turns marking the spaces in a 3×3 grid.
-The player who succeeds in placing three of their marks in a horizontal, vertical,
-or diagonal row is the winner. It is a solved game with a forced draw assuming best play
-from both players.**\n\n\n")
+if __FILE__ == $PROGRAM_NAME
+  game_ui = GameUi.new("\t\t\t\t*****TIC TAC TOE*******\n\n\n",
+                       "**for two players, X and O, who take turns marking the spaces in a 3times3 grid.
+  The player who succeeds in placing three of their marks in a horizontal, vertical,
+  or diagonal row is the winner. It is a solved game with a forced draw assuming best play
+  from both players.**\n\n\n")
 
-# puts game_ui.display_title_on_screen
-# puts game_ui.display_instructions
-# game_ui.provide_players_info
+  puts game_ui.display_title_on_screen
+  puts game_ui.display_instructions
+  game_ui.provide_players_info
+end
 # rubocop:enable Metrics/MethodLength
