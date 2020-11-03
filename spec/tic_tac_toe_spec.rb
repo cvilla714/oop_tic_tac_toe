@@ -59,11 +59,6 @@ RSpec.describe 'An idial TIC TAC TOE game' do
         .to output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
         .to_stdout
     end
-
-    # it 'start game' do
-    #   allow(game_ui).to receive(:gets).and_return('name')
-    #   expect { game_ui.start_game }.to output("Please Provide a Name for the player\n").to_stdout
-    # end
   end
 
   describe 'The Game logic ' do

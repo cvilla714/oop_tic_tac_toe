@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# rubocop:disable Metrics/MethodLength
 require 'colorize'
 require_relative '../lib/user'
 require_relative '../lib/logic'
@@ -58,36 +57,8 @@ class GameUi
     player_name
   end
 
-  private
-
-  def provide_players_info
-    puts 'Please provide the name for Player1: '
-    player1_name = gets.chomp
-    player1_name = validating_name(player1_name)
-    puts 'Please choose between X or O '
-    player1_value = gets.chomp
-    player1_value = validating_value(player1_value.upcase)
-    puts 'Please provide the name for Player2: '
-    player2_name = gets.chomp
-    player2_name = validating_name(player2_name)
-    player2_value = player1_value == 'O' ? 'X' : 'O'
-    player1 = Player.new(player1_name, player1_value.yellow)
-    player2 = Player.new(player2_name, player2_value.blue)
-    players_list = [player1, player2]
-    puts "player #{player2.name.green} choose #{player2.value.yellow}"
-    players_turn(players_list)
-    true
-  end
-
-  public
-
   def display_instructions
     instructions
-  end
-
-  def start_game
-    provide_players_info
-    true
   end
 
   def display_board(table)
@@ -100,36 +71,6 @@ class GameUi
          " \t\t----- \n"
     table.board
   end
-
-  private
-
-  def players_turn(players_list)
-    draw = false
-    table = Board.new
-    display_board(table)
-    8.downto(0) do |space|
-      user_id = space.odd? ? 1 : 0
-      puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
-      input_user = gets.chomp
-      input_user = numbers_validator(input_user)
-      puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
-      if input_user == 'q'
-        puts 'Quiting game...'.red
-        return nil
-      end
-      empty_space = entry_space_validator(table.board, input_user.to_i)
-      table.board[empty_space.to_i - 1] = players_list[user_id].value unless input_user == 'q'
-      winner = AuthenticatingValues.authenticating_winner(table, players_list[user_id])
-      display_board(table)
-      if winner
-        draw = winner
-        puts "Congratulatios #{players_list[user_id].name} you Won!!".green
-        break
-      end
-      draw = winner
-    end
-    puts "It's a draw!".red + '  GAME OVER'.light_blue unless draw
-  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -141,6 +82,43 @@ if __FILE__ == $PROGRAM_NAME
 
   puts game_ui.display_title_on_screen
   puts game_ui.display_instructions
-  game_ui.start_game
+  puts 'Please provide the name for Player1: '
+  player1_name = gets.chomp
+  player1_name = game_ui.validating_name(player1_name)
+  puts 'Please choose between X or O '
+  player1_value = gets.chomp
+  player1_value = game_ui.validating_value(player1_value.upcase)
+  puts 'Please provide the name for Player2: '
+  player2_name = gets.chomp
+  player2_name = game_ui.validating_name(player2_name)
+  player2_value = player1_value == 'O' ? 'X' : 'O'
+  player1 = Player.new(player1_name, player1_value.yellow)
+  player2 = Player.new(player2_name, player2_value.blue)
+  players_list = [player1, player2]
+  puts "player #{player2.name.green} choose #{player2.value.yellow}"
+  draw = false
+  table = Board.new
+  game_ui.display_board(table)
+  8.downto(0) do |space|
+    user_id = space.odd? ? 1 : 0
+    puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
+    input_user = gets.chomp
+    input_user = game_ui.numbers_validator(input_user)
+    puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
+    if input_user == 'q'
+      puts 'Quiting game...'.red
+      return nil
+    end
+    empty_space = game_ui.entry_space_validator(table.board, input_user.to_i)
+    table.board[empty_space.to_i - 1] = players_list[user_id].value unless input_user == 'q'
+    winner = AuthenticatingValues.authenticating_winner(table, players_list[user_id])
+    game_ui.display_board(table)
+    if winner
+      draw = winner
+      puts "Congratulatios #{players_list[user_id].name} you Won!!".green
+      break
+    end
+    draw = winner
+  end
+  puts "It's a draw!".red + '  GAME OVER'.light_blue unless draw
 end
-# rubocop:enable Metrics/MethodLength
