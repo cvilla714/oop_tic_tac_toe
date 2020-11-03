@@ -41,7 +41,7 @@ class GameUi
       if value == board[value - 1]
         option = true
       else
-        puts 'That spot is taken chose again'.red
+        puts 'That spot is taken chose again'
         new_input = gets.chomp
         value = new_input.to_i
         option = false
