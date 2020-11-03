@@ -89,4 +89,14 @@ RSpec.describe GameUi do
       expect { maintitle.display_board(displayboard) }.to output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\t4|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n").to_stdout
     end
   end
+  context 'matching a winning combination' do
+    before(:example) do
+      displayboard.board = %w[X O X
+                              O X O
+                              X O O]
+    end
+    it 'match the winning combo' do
+      expect(AuthenticatingValues.authenticating_winner(displayboard, player1)).to eq(true)
+    end
+  end
 end
