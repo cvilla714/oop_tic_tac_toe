@@ -14,31 +14,55 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect(game_ui.display_title_on_screen).to eq(title)
     end
 
-    it 'validate the X and O' do
-      expect(game_ui.validating_value('X')).to eq('X')
+    describe '#validating_value' do
+      context 'When the player inputs the right value' do
+        it 'validate the X and O' do
+          expect(game_ui.validating_value('X')).to eq('X')
+        end
+      end
+    
+      context 'When the player inputs the wrong value' do
+        before do
+          allow(game_ui).to receive(:gets).and_return('O')
+        end     
+        it 'validate input differences values than the X and O' do
+          expect { game_ui.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
+        end
+      end
     end
 
-    it 'validate input differences values than the X and O' do
-      allow(game_ui).to receive(:gets).and_return('O')
-      expect { game_ui.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
+    describe '#numbers_validator' do
+      context 'When the player inputs the right number' do
+        it 'validate that the input is between 1 to 9 or q' do
+          expect(game_ui.numbers_validator(1)).to eq(1)
+        end
+      end
+    
+      context 'When the player inputs the wrong number' do
+        before do
+          allow(game_ui).to receive(:gets).and_return('9')
+        end
+        it 'validate that the input is not between 1 to 9 or q' do
+          expect { game_ui.numbers_validator(10) }.to output("Please enter a number between 1 to 9 or q\n").to_stdout
+        end
+      end
     end
 
-    it 'validate that the input is between 1 to 9 or q' do
-      expect(game_ui.numbers_validator(1)).to eq(1)
-    end
-
-    it 'validate that the input is not between 1 to 9 or q' do
-      allow(game_ui).to receive(:gets).and_return('9')
-      expect { game_ui.numbers_validator(10) }.to output("Please enter a number between 1 to 9 or q\n").to_stdout
-    end
-
-    it 'validate Free spaces in the board' do
-      expect(game_ui.entry_space_validator(board, 3)).to eq(3)
-    end
-
-    it 'validate Full space in the board' do
-      allow(game_ui).to receive(:gets).and_return('1')
-      expect { game_ui.entry_space_validator(board, 4) }.to output("That spot is taken chose again\n").to_stdout
+    describe '#entry_space_validator' do
+      context 'When player enters number on a free space' do
+        it 'validate Free spaces in the board' do
+          expect(game_ui.entry_space_validator(board, 3)).to eq(3)
+        end
+      end
+        
+      context 'validate Full space in the board' do
+        before do
+          allow(game_ui).to receive(:gets).and_return('1')
+        end
+        it 'does not include the display name' do
+          expect { game_ui.entry_space_validator(board, 4) }.to output("That spot is taken chose again\n").to_stdout
+        end
+      end
     end
 
     it 'validate Player name no given' do
