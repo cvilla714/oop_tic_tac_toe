@@ -65,13 +65,21 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       end
     end
 
-    it 'validate Player name no given' do
-      allow(game_ui).to receive(:gets).and_return('name')
-      expect { game_ui.validating_name('') }.to output("Please Provide a Name for the player\n").to_stdout
-    end
-
-    it 'validate Player name' do
-      expect(game_ui.validating_name('player')).to eq('player')
+    describe '#validating_name' do
+      context 'when player has provided a name' do
+        it 'validate Player name' do
+          expect(game_ui.validating_name('player')).to eq('player')
+        end
+      end
+        
+      context 'when player has not provided a name' do
+        before do
+          allow(game_ui).to receive(:gets).and_return('name')
+        end
+        it 'does not include the display name' do
+          expect { game_ui.validating_name('') }.to output("Please Provide a Name for the player\n").to_stdout
+        end
+      end
     end
 
     it 'Returns the instructions ' do
