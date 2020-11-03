@@ -1,3 +1,4 @@
+
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # OOP TIC TAC TOE
@@ -10,48 +11,34 @@
 
 ## Requirements
 
-- run bundle install
+-run bundle install
 
 ## Instructions
-
-## How to clone to run the game
-
-- Click on the green button top right corner that is called code from the page to access to clone the project.
-
-- Copy the https url and then on your local machine you have to run this command
-
-- Git clone + the link you copied.
-
-- Once the project has been clone you need to navigate to the bin folder by typing cd bin and from withing this folder run the command in the terminal main.rb
 	
-> How the game starts 
-- The very first thing to do is to type this command man.rb this will start the game.
-
-- First players will be asked to provide the name, it cannot have an empty space and it can be a combination of numbers and letters.
-
-![screenshot](./pictures/start_the_game.png)
-
-- The first players will be asked to choose between X and O.
-
-- Second Player will be asked for the name, same rules apply no empty characters and it can combination between  lettesr and numbers.
-
-- The Second players won't be asked to choose between X and O because they will be assigned the next value that the first player picked.
-
-- Once the game starts the players will be asked to choose a number from the grid between 1 to 9 or quite the game by pressing the letter q.
-
-![screenshot](./pictures/how_to_play_the_game.png)
-
-- If a players chooses a number from the grid that has already been chosen by the opposite player then you will get a message saying " spot has bee already 
-selected please try again".
-
-- In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.
-
-![screenshot](./pictures/winner.png)
-
-- The game will end in a draw if no one has three of their marks in a horizontal, vertical or diagonal row.
-
-![screenshot](./pictures/draw.png)
-
+How the game starts 
+    - The very first thing to do is to type this command man.rb this will start the game
+    - First players will be asked to provide the name, it cannot have an empty space and it can be a combination of numbers and letters
+    ![screenshot](./pictures/start_the_game.png)
+    - The first players will be asked to choose between X and O
+    - Second Player will be asked for the name, same rules apply no empty characters and it can combination between  lettesr and numbers
+    - The Second players won't be asked to choose between X and O because they will be assigned the next value that the first player picked
+    ![screenshot](./assets/images/screenshot.png)
+    - Once the game starts the players will be asked to choose a number from the grid between 1 to 9 or quite the game by pressing the letter q.
+    ![screenshot](./pictures/how_to_play_the_game.png)
+    - If a players chooses a number from the grid that has already been chosen by the opposite player then you will get a message saying " spot has bee already 
+    selected please try again".
+    - In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.
+    ![screenshot](./pictures/winner.png)
+    -The game will end in a draw if no one has three of their marks in a horizontal, vertical or diagonal row.
+    ![screenshot](./pictures/draw.png)
+    
+   ## Running Tests
+   
+   - Open the console
+   - Navigate to the Tic-Tac-Toe project
+   - Run gem install rspec
+   - Run rspec
+   - The spec file is in the spec folder
 
 ## Authors
 
@@ -66,6 +53,12 @@ selected please try again".
 - GitHub: [@kenderb](https://github.com/ken)
 - Twitter: [@twitterhandle](https://twitter.com/KBTarts)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kender-bolivar-1736086b/)
+
+👤 **Will Nyamunokora**
+
+- Github: [@bigwizzo](https://github.com/bigwizzo)
+- Twitter: [@willnyamunokora](https://twitter.com/willnyamunokora)
+- Linkedin: [linkedin Profile](https://www.linkedin.com/in/willnyamunokora/)
 
 ## Show your support
 
