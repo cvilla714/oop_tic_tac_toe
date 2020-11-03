@@ -1,11 +1,16 @@
 require_relative '../bin/main.rb'
 
 RSpec.describe GameUi do
-  let(:noto) { GameUi.new('title', 'instructions') }
-  #   let(:title) { display_title_on_screen }
-  #   let(:instructions) { display_instructions }
+  let(:maintitle) { GameUi.new('title', 'instructions') }
+  let(:notitle) { GameUi.new(nil, 'instructions') }
 
   it 'check if the title is displayed' do
-    expect(noto.title).to eq('title')
+    expect(maintitle.title).to eq('title')
   end
+
+     context "when you don't have a title" do
+     it 'check if the title is not displayed' do
+       expect(notitle.title).to eq('No title')
+        end
+    end
 end
