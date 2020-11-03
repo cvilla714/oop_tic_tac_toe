@@ -18,7 +18,7 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect(game_ui.validating_value('X')).to eq('X')
     end
 
-    it 'validate input diferen values than the X and O' do
+    it 'validate input differences values than the X and O' do
       allow(game_ui).to receive(:gets).and_return('O')
       expect { game_ui.validating_value(' ') }.to output("Please enter X or O\n").to_stdout
     end
@@ -71,15 +71,21 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect { game_ui.ask_player_for_value }.to output("Please choose between X or O \n").to_stdout
     end
 
-    it 'display_player_choice' do
+    it 'display player choice' do
       expect { game_ui.display_player_choice(player_1) }
         .to output("player \e[0;32;49mKender\e[0m choose \e[0;33;49mO\e[0m\n").to_stdout
     end
 
-    it 'ask_player_to_fill_board' do
+    it 'ask player to fill board' do
       allow(game_ui).to receive(:gets).and_return('1')
       expect { game_ui.ask_player_to_fill_board(player_1.name) }
         .to output("Please player \e[0;32;49mKender\e[0m choose a number from the grid 1 to 9 or q to exit.\n")
+        .to_stdout
+    end
+
+    it 'display empty space to the player' do
+      expect { game_ui.display_enty_space(player_1.name, 8) }
+        .to output("Player #{player_1.name} there are only 8 spaces left \n\n")
         .to_stdout
     end
   end
@@ -91,6 +97,7 @@ RSpec.describe 'An idial TIC TAC TOE game' do
                             X X O]
       expect(AuthenticatingValues.authenticating_winner(game_board, player_1)).to eq(true)
     end
+
     it 'Aunthenticating Draw' do
       game_board.board = %w[X X O
                             O O X

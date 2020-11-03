@@ -90,6 +90,10 @@ class GameUi
     puts "Please player #{player_instance.green} choose a number from the grid 1 to 9 or q to exit."
     gets.chomp
   end
+
+  def display_enty_space(player_name, space)
+    puts "Player #{player_name} there are only #{space} spaces left \n\n"
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -116,7 +120,7 @@ if __FILE__ == $PROGRAM_NAME
   8.downto(0) do |space|
     user_id = space.odd? ? 1 : 0
     input_user = game_ui.numbers_validator(game_ui.ask_player_to_fill_board(players_list[user_id].name))
-    puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
+    game_ui.display_enty_space(players_list[user_id].name.green, space)
     if input_user == 'q'
       puts 'Quiting game...'.red
       return nil
