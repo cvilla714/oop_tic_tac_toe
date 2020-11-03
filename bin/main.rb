@@ -71,6 +71,20 @@ class GameUi
          " \t\t----- \n"
     table.board
   end
+
+  def ask_player_for_name (player_number)
+    puts "Please provide the name for Player#{player_number}: "
+    gets.chomp
+  end
+
+  def ask_player_for_value
+    puts 'Please choose between X or O '
+    gets.chomp
+  end
+
+  def display_player_choice(player_instance)
+    puts "player #{player_instance.name.green} choose #{player_instance.value.yellow}"
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -82,20 +96,15 @@ if __FILE__ == $PROGRAM_NAME
 
   puts game_ui.display_title_on_screen
   puts game_ui.display_instructions
-  puts 'Please provide the name for Player1: '
-  player1_name = gets.chomp
-  player1_name = game_ui.validating_name(player1_name)
-  puts 'Please choose between X or O '
-  player1_value = gets.chomp
+  player1_name = game_ui.validating_name(game_ui.ask_player_for_name(1))
+  player1_value = game_ui.ask_player_for_value
   player1_value = game_ui.validating_value(player1_value.upcase)
-  puts 'Please provide the name for Player2: '
-  player2_name = gets.chomp
-  player2_name = game_ui.validating_name(player2_name)
+  player2_name = game_ui.validating_name(game_ui.ask_player_for_name(2))
   player2_value = player1_value == 'O' ? 'X' : 'O'
   player1 = Player.new(player1_name, player1_value.yellow)
   player2 = Player.new(player2_name, player2_value.blue)
   players_list = [player1, player2]
-  puts "player #{player2.name.green} choose #{player2.value.yellow}"
+  game_ui.display_player_choice(player2)
   draw = false
   table = Board.new
   game_ui.display_board(table)
