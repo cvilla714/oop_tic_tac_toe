@@ -26,7 +26,7 @@ RSpec.describe 'An idial TIC TAC TOE game' do
       expect(game_ui.entry_space_validator(board, 3)).to eq(3)
     end
 
-    it 'validate Player name' do
+    it 'validate Full space in the board' do
       allow(game_ui).to receive(:gets).and_return('1')
       expect { game_ui.entry_space_validator(board, 4) }.to output("That spot is taken chose again\n").to_stdout
     end
