@@ -25,7 +25,7 @@ How the game starts
     - Once the game starts the players will be asked to choose a number from the grid between 1 to 9 or quite the game by pressing the letter q.
     ![screenshot](./pictures/how_to_play_the_game.png)
     - If a players chooses a number from the grid that has already been chosen by the opposite player then you will get a message saying " spot has bee already 
-    selected please try again"
+    selected please try again".
     - In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.
     ![screenshot](./pictures/winner.png)
     -The game will end in a draw if no one has three of their marks in a horizontal, vertical or diagonal row.
