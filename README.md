@@ -22,7 +22,7 @@ How the game starts
     - Second Player will be asked for the name, same rules apply no empty characters and it can combination between  lettesr and numbers
     - The Second players won't be asked to choose between X and O because they will be assigned the next value that the first player picked
     ![screenshot](./assets/images/screenshot.png)
-    - Once the game starts the players will be asked to choose a number from the grid between 1 to 9 or quite the game by pressing the letter q
+    - Once the game starts the players will be asked to choose a number from the grid between 1 to 9 or quite the game by pressing the letter q.
     ![screenshot](./pictures/how_to_play_the_game.png)
     - If a players chooses a number from the grid that has already been chosen by the opposite player then you will get a message saying " spot has bee already 
     selected please try again"
