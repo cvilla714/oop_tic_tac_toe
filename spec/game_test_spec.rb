@@ -84,4 +84,9 @@ RSpec.describe GameUi do
       expect(maintitle.validating_name('Ali')).to eq('Ali')
     end
   end
+  describe 'check if the board is displayed' do
+    it 'will check if the board will display to the players' do
+      expect { maintitle.display_board(displayboard) }.to output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\t4|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n").to_stdout
+    end
+  end
 end
