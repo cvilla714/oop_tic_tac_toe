@@ -1,9 +1,16 @@
 require_relative '../bin/main.rb'
+require_relative '../lib/game_board'
+require_relative '../lib/logic'
+require_relative '../lib/user'
 
 RSpec.describe GameUi do
   let(:maintitle) { GameUi.new('title', 'instructions') }
   let(:notitle) { GameUi.new(nil, 'instructions') }
   let(:noinstuctions) { GameUi.new('title', 'No instructions') }
+  let(:displayboard) { Board.new }
+  let(:player1) { Player.new('Ali', 'X') }
+
+  # let(:board) { [1, 2, 3, 4, 5, 6, 7, 8, 9] }
   #   let(:firstplayer) { Player.new.ask_player_for_name('name', value) }
 
   it 'check if the title is displayed' do
@@ -76,12 +83,6 @@ RSpec.describe GameUi do
     it 'will check for empty spaces for the players names' do
       allow(maintitle).to receive(:gets).and_return('name')
       expect { maintitle.validating_name('  ') }.to output("Please Provide a Name for the player\n").to_stdout
-    end
-  end
-
-  context 'validate the name of the player' do
-    it 'will check the player has provided a valid name' do
-      expect(maintitle.validating_name('Ali')).to eq('Ali')
     end
   end
 end
