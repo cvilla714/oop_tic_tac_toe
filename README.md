@@ -46,6 +46,12 @@ How the game starts
 - Twitter: [@twitterhandle](https://twitter.com/KBTarts)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kender-bolivar-1736086b/)
 
+👤 **Will Nyamunokora**
+
+- Github: [@bigwizzo](https://github.com/bigwizzo)
+- Twitter: [@willnyamunokora](https://twitter.com/willnyamunokora)
+- Linkedin: [linkedin Profile](https://www.linkedin.com/in/willnyamunokora/)
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
