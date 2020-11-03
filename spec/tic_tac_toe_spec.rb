@@ -31,6 +31,5 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     it 'Returns the instructions ' do
       expect(game_board.display_instructions).to eq(instructions)
     end
-
   end
 end
