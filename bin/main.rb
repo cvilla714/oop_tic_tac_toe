@@ -9,8 +9,8 @@ class GameUi
   SELECTION = %w[X O].freeze
   NUMBERS_RANGES = (1..9).freeze
 
-  def initialize(title, instructions)
-    @title = title
+  def initialize(title, instructions = 'No instructions')
+    @title = title.nil? ? 'No title' : title
     @instructions = instructions
   end
 
