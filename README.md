@@ -30,7 +30,14 @@ How the game starts
     ![screenshot](./pictures/winner.png)
     -The game will end in a draw if no one has three of their marks in a horizontal, vertical or diagonal row.
     ![screenshot](./pictures/draw.png)
-
+    
+   ## Running Tests
+   
+   - Open the console
+   - Navigate to the Tic-Tac-Toe project
+   - Run gem install rspec
+   - Run rspec
+   - The spec file is in the spec folder
 
 ## Authors
 
