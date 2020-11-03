@@ -44,6 +44,13 @@ RSpec.describe 'An idial TIC TAC TOE game' do
     it 'Returns the instructions ' do
       expect(game_ui.display_instructions).to eq(instructions)
     end
+
+    it 'Display the board' do
+      game_board.board = board
+      expect { game_ui.display_board(game_board) }
+        .to_not output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
+        .to_stdout
+    end
   end
 
   describe 'The Game logic ' do

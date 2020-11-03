@@ -81,13 +81,14 @@ class GameUi
   end
 
   def display_board(table)
-    puts " \t\t \n".yellow
-    puts " \t\t#{table.board[0]}|#{table.board[1]}|#{table.board[2]}"
-    puts " \t\t----- ".yellow
-    puts " \t\t#{table.board[3]}|#{table.board[4]}|#{table.board[5]}"
-    puts " \t\t----- ".yellow
-    puts " \t\t#{table.board[6]}|#{table.board[7]}|#{table.board[8]}"
-    puts " \t\t----- \n".yellow
+    puts "\t\t \n".yellow +
+         " \t\t#{table.board[0]}|#{table.board[1]}|#{table.board[2]} \n" +
+         " \t\t----- \n".yellow +
+         " \t\t#{table.board[3]}|#{table.board[4]}|#{table.board[5]} \n" +
+         " \t\t----- \n".yellow +
+         " \t\t#{table.board[6]}|#{table.board[7]}|#{table.board[8]} \n" +
+         " \t\t----- \n".yellow
+    table.board
   end
 
   def players_turn(players_list)
