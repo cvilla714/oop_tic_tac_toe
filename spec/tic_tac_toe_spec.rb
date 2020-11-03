@@ -60,16 +60,27 @@ RSpec.describe 'An idial TIC TAC TOE game' do
         .to output("\t\t \n \t\t1|2|3 \n \t\t----- \n \t\tX|5|6 \n \t\t----- \n \t\t7|8|9 \n \t\t----- \n")
         .to_stdout
     end
+
     it 'ask for a player name' do
       allow(game_ui).to receive(:gets).and_return('name')
       expect { game_ui.ask_player_for_name(1) }.to output("Please provide the name for Player1: \n").to_stdout
     end
+
     it 'ask for a player value' do
       allow(game_ui).to receive(:gets).and_return('name')
       expect { game_ui.ask_player_for_value }.to output("Please choose between X or O \n").to_stdout
     end
+
     it 'display_player_choice' do
-      expect { game_ui.display_player_choice(player_1) }.to output("player \e[0;32;49mKender\e[0m choose \e[0;33;49mO\e[0m\n").to_stdout
+      expect { game_ui.display_player_choice(player_1) }
+        .to output("player \e[0;32;49mKender\e[0m choose \e[0;33;49mO\e[0m\n").to_stdout
+    end
+
+    it 'ask_player_to_fill_board' do
+      allow(game_ui).to receive(:gets).and_return('1')
+      expect { game_ui.ask_player_to_fill_board(player_1.name) }
+        .to output("Please player \e[0;32;49mKender\e[0m choose a number from the grid 1 to 9 or q to exit.\n")
+        .to_stdout
     end
   end
 

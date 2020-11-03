@@ -19,11 +19,11 @@ class GameUi
   end
 
   def validating_value(choice)
-    until SELECTION.any?(choice)
+    until SELECTION.any?(choice.upcase)
       puts 'Please enter X or O'
       choice = gets.chomp
     end
-    choice
+    choice.upcase
   end
 
   def numbers_validator(choice)
@@ -72,7 +72,7 @@ class GameUi
     table.board
   end
 
-  def ask_player_for_name (player_number)
+  def ask_player_for_name(player_number)
     puts "Please provide the name for Player#{player_number}: "
     gets.chomp
   end
@@ -84,6 +84,11 @@ class GameUi
 
   def display_player_choice(player_instance)
     puts "player #{player_instance.name.green} choose #{player_instance.value.yellow}"
+  end
+
+  def ask_player_to_fill_board(player_instance)
+    puts "Please player #{player_instance.green} choose a number from the grid 1 to 9 or q to exit."
+    gets.chomp
   end
 end
 
@@ -110,9 +115,7 @@ if __FILE__ == $PROGRAM_NAME
   game_ui.display_board(table)
   8.downto(0) do |space|
     user_id = space.odd? ? 1 : 0
-    puts "Please player #{players_list[user_id].name.green} choose a number from the grid 1 to 9 or q to exit."
-    input_user = gets.chomp
-    input_user = game_ui.numbers_validator(input_user)
+    input_user = game_ui.numbers_validator(game_ui.ask_player_to_fill_board(players_list[user_id].name))
     puts "Player #{players_list[user_id].name.green} there are only #{space} spaces left \n\n"
     if input_user == 'q'
       puts 'Quiting game...'.red
