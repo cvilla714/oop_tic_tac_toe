@@ -1,4 +1,6 @@
-require_relative '../bin/main.rb'
+# rubocop:disable Layout/LineLength
+
+require_relative '../bin/main'
 require_relative '../lib/game_board'
 require_relative '../lib/logic'
 require_relative '../lib/user'
@@ -112,12 +114,13 @@ RSpec.describe Board do
       expect(AuthenticatingValues.authenticating_winner(subject, player1)).to eq(true)
     end
     context 'matich a draw combination' do
-    before(:example) do
-      subject.board = %w[X X O O O X X X O]
-    end
-    it 'will match for the draw' do
-      expect(AuthenticatingValues.authenticating_winner(subject, player1)).to eq(false)
+      before(:example) do
+        subject.board = %w[X X O O O X X X O]
+      end
+      it 'will match for the draw' do
+        expect(AuthenticatingValues.authenticating_winner(subject, player1)).to eq(false)
+      end
     end
   end
- end
 end
+# rubocop:enable Layout/LineLength
