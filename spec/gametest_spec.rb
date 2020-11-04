@@ -111,5 +111,13 @@ RSpec.describe Board do
     it 'match the winning combo' do
       expect(AuthenticatingValues.authenticating_winner(subject, player1)).to eq(true)
     end
+    context 'matich a draw combination' do
+    before(:example) do
+      subject.board = %w[X X O O O X X X O]
+    end
+    it 'will match for the draw' do
+      expect(AuthenticatingValues.authenticating_winner(subject, player1)).to eq(false)
+    end
   end
+ end
 end
