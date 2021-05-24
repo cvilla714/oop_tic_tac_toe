@@ -1,2 +1,0 @@
-language = "ruby"
-run = "bundler exec ruby bin/main.rb"
